@@ -70,7 +70,7 @@ Or in other words:
 Notice that we use a syntax for attributes that keeps it compact, yet readable.  Basically, every attribute is separated by a '**|**' (single pipe), and we drop the quotes.
 
 ```php
-$html = $table->open('border=1|style=background-color:yellow;');
+$html = $table->open('border=1|class=special');
 $html .= $table->row();
 $html .= $table->cell('rowspan=2', 'Two Rows');
 $html .= $table->cell('', 'One');
@@ -82,7 +82,7 @@ $html .= $table->close();
 echo $html;
 ```
 
-<table border="1" style="background-color:yellow;">
+<table border="1" class="special">
     <tbody>
         <tr>
             <td rowspan="2">Two Rows</td>
@@ -95,7 +95,7 @@ echo $html;
 </table>
 
 ```html
-<table border="1" style="background-color:yellow;">
+<table border="1" class="special">
     <tbody>
         <tr>
             <td rowspan="2">Two Rows</td>
