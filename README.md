@@ -70,7 +70,7 @@ Or in other words:
 Notice that we use a syntax for attributes that keeps it compact, yet readable.  Basically, every attribute is separated by a '**|**' (single pipe), and we drop the quotes.
 
 ```php
-$html = $table->open('border=1|bgcolor=yellow');
+$html = $table->open('border=1|style=background-color:yellow;');
 $html .= $table->row();
 $html .= $table->cell('rowspan=2', 'Two Rows');
 $html .= $table->cell('', 'One');
@@ -82,7 +82,7 @@ $html .= $table->close();
 echo $html;
 ```
 
-<table border="1" bgcolor="yellow">
+<table border="1" style="background-color:yellow;">
     <tbody>
         <tr>
             <td rowspan="2">Two Rows</td>
@@ -95,7 +95,7 @@ echo $html;
 </table>
 
 ```html
-<table border="1">
+<table border="1" style="background-color:yellow;">
     <tbody>
         <tr>
             <td rowspan="2">Two Rows</td>
@@ -110,7 +110,7 @@ echo $html;
 
 ## Caption, Header, and Footer
 
-It is not necessary to pass a cells content to the method.  It will still be wrapped up appropriately.
+It is not necessary to pass a cells content to the method.  It will still be wrapped appropriately.
 
 ```php
 $html = $table->open('border=1', 'Caption');

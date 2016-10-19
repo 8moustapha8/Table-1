@@ -18,6 +18,14 @@ class Component
         $this->page = Page::html();
     }
 
+    /**
+     * Create a ``<table>``.
+     * 
+     * @param string|array $vars    ``<table>`` attributes.
+     * @param string       $caption Table ``<caption>``.
+     * 
+     * @return string
+     */
     public function open($vars = '', $caption = '')
     {
         if (!empty($caption)) {
@@ -27,6 +35,14 @@ class Component
         return "\n".$this->page->tag('table', $this->values($vars)).$caption;
     }
 
+    /**
+     * Create a ``<thead>`` row.
+     * 
+     * @param string|array $vars  ``<tr>`` attributes.
+     * @param string|array $cells ``<th>`` attributes for all of this rows cells.
+     * 
+     * @return string
+     */
     public function head($vars = '', $cells = '')
     {
         $html = $this->wrapUp('head')."\n\t";
@@ -36,6 +52,14 @@ class Component
         return $html.$this->page->tag('tr', $this->values($vars));
     }
 
+    /**
+     * Create a ``<tfoot>`` row.
+     * 
+     * @param string|array $vars  ``<tr>`` attributes.
+     * @param string|array $cells ``<td>`` attributes for all of this rows cells.
+     * 
+     * @return string
+     */
     public function foot($vars = '', $cells = '')
     {
         $html = $this->wrapUp('foot')."\n\t";
@@ -45,6 +69,14 @@ class Component
         return $html.$this->page->tag('tr', $this->values($vars));
     }
 
+    /**
+     * Create a ``<tbody>`` row.
+     * 
+     * @param string|array $vars  ``<tr>`` attributes.
+     * @param string|array $cells ``<td>`` attributes for all of this rows cells.
+     * 
+     * @return string
+     */
     public function row($vars = '', $cells = '')
     {
         $html = $this->wrapUp('row')."\n\t";
@@ -54,6 +86,14 @@ class Component
         return $html.$this->page->tag('tr', $this->values($vars));
     }
 
+    /**
+     * Create a ``<th>`` or ``<td>`` cell.
+     * 
+     * @param string|array $vars    The cell's attributes.
+     * @param string       $content The (optional) cell's value.
+     * 
+     * @return string
+     */
     public function cell($vars = '', $content = '')
     {
         $html = $this->wrapUp('cell');
@@ -67,6 +107,11 @@ class Component
         return $html.$this->page->tag($tag, $vars).$content;
     }
 
+    /**
+     * Closes any remaining open tags.
+     * 
+     * @return string
+     */
     public function close()
     {
         $html = $this->wrapUp('table')."\n";
@@ -79,6 +124,13 @@ class Component
         return $html.'</table>';
     }
 
+    /**
+     * Converts a '**|**' (single pipe) separated string to an array of attributes.
+     * 
+     * @param string|array $vars Attributes
+     * 
+     * @return array
+     */
     protected function values($vars)
     {
         if (is_array($vars)) {
@@ -88,13 +140,20 @@ class Component
         foreach (explode('|', $vars) as $value) {
             if (strpos($value, '=')) {
                 list($key, $value) = explode('=', $value);
-                $attributes[$key] = $value;
+                $attributes[trim($key)] = trim($value);
             }
         }
 
         return $attributes;
     }
 
+    /**
+     * Closes a row's open tags to be ready for the next one.
+     * 
+     * @param <type> $section
+     * 
+     * @return <type>
+     */
     private function wrapUp($section)
     {
         $html = $this->cell;
