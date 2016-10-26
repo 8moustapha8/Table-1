@@ -30,10 +30,10 @@ use BootPress\Table\Component as Table;
 $table = new Table;
 
 $html = $table->open();
-$html .= $table->row();
-$html .= $table->cell('', 'One');
-$html .= $table->cell('', 'Two');
-$html .= $table->cell('', 'Three');
+    $html .= $table->row();
+    $html .= $table->cell('', 'One');
+    $html .= $table->cell('', 'Two');
+    $html .= $table->cell('', 'Three');
 $html .= $table->close();
 
 echo $html;
@@ -71,12 +71,12 @@ Notice that we use a syntax for attributes that keeps it compact, yet readable. 
 
 ```php
 $html = $table->open('border=1|class=special');
-$html .= $table->row();
-$html .= $table->cell('rowspan=2', 'Two Rows');
-$html .= $table->cell('', 'One');
-$html .= $table->cell('', 'Two');
-$html .= $table->row();
-$html .= $table->cell('colspan=2', 'Buckle my shoe');
+    $html .= $table->row();
+    $html .= $table->cell('rowspan=2', 'Two Rows');
+    $html .= $table->cell('', 'One');
+    $html .= $table->cell('', 'Two');
+    $html .= $table->row();
+    $html .= $table->cell('colspan=2', 'Buckle my shoe');
 $html .= $table->close();
 
 echo $html;
@@ -114,13 +114,13 @@ It is not necessary to pass a cells content to the method.  It will still be wra
 
 ```php
 $html = $table->open('border=1', 'Caption');
-$html .= $table->head();
-$html .= $table->cell('colspan=2') . 'Header';
-$html .= $table->row();
-$html .= $table->cell() . 'Three';
-$html .= $table->cell() . 'Four';
-$html .= $table->foot();
-$html .= $table->cell('colspan=2') . 'Shut the door';
+    $html .= $table->head();
+    $html .= $table->cell('colspan=2') . 'Header';
+    $html .= $table->row();
+    $html .= $table->cell() . 'Three';
+    $html .= $table->cell() . 'Four';
+    $html .= $table->foot();
+    $html .= $table->cell('colspan=2') . 'Shut the door';
 $html .= $table->close();
 
 echo $html;
@@ -177,16 +177,16 @@ $t1 = new Table;
 $t2 = new Table;
 
 $html = $t1->open();
-$html .= $t1->row();
-$html .= $t1->cell('', 'Five');
-$html .= $t1->cell() . 'Six';
-$html .= $t1->cell();
-    $html .= $t2->open('border=1');
-    $html .= $t2->row();
-    $html .= $t2->cell('', 'Pick');
-    $html .= $t2->cell('', 'Up');
-    $html .= $t2->cell('', 'Sticks');
-    $html .= $t2->close();
+    $html .= $t1->row();
+    $html .= $t1->cell('', 'Five');
+    $html .= $t1->cell() . 'Six';
+    $html .= $t1->cell();
+        $html .= $t2->open('border=1');
+            $html .= $t2->row();
+            $html .= $t2->cell('', 'Pick');
+            $html .= $t2->cell('', 'Up');
+            $html .= $t2->cell('', 'Sticks');
+        $html .= $t2->close();
 $html .= $t1->close();
 ```
 
