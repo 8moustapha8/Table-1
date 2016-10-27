@@ -25,6 +25,8 @@ Add the following to your ``composer.json`` file.
 ## A Simple Example
 
 ```php
+<?php
+
 use BootPress\Table\Component as Table;
 
 $table = new Table;
